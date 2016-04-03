@@ -1,4 +1,4 @@
-<li>
+<li id="new_instruction">
 	<div class="timeline-badge success"><i class="fa fa-plus"></i>
 	</div>
 	<div class="timeline-panel">
@@ -6,7 +6,7 @@
 			<h4 class="timeline-title">Add another instruction</h4>
 		</div>
 		<div class="timeline-body">
-			<%= form_for @new_instruction do |f| %>
+			<%= form_for @new_instruction, remote: true do |f| %>
 			<%= f.hidden_field :lesson_id, value: @lesson.id  %>
 			<div class="form-group">
 				<%= f.label :text, class: "control-label" %>

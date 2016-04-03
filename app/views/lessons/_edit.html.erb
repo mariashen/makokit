@@ -9,13 +9,13 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <ul class="timeline">
+                <ul class="timeline" id="instruction_timeline">
 
 
                 	<% @lesson.instructions.each do |instruction| %>
-                		<%= render partial: "instructions/edit", locals:{ instruction: instruction } %>
+                		<%= render partial: "instructions/show", locals:{ instruction: instruction } %>
                 		<% instruction.answers.each do |answer| %>
-                			<%= render partial: "answers/edit", locals:{ answer: answer } %>
+                			<%= render partial: "answers/show", locals:{ answer: answer } %>
                 		<% end %>
                 	<% end %>
 

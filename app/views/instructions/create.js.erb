@@ -1,0 +1,6 @@
+$("#instruction_timeline").append("<%= escape_javascript render partial: 'instructions/show', locals: {instruction: @instruction} %>");
+
+$("#new_instruction").remove();
+$("#instruction_timeline").append("<%= escape_javascript render partial: 'instructions/new' %>");
+
+

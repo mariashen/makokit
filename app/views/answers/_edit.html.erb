@@ -1,39 +1,51 @@
 
-<li id="answer_<%= answer.id %>" class="timeline-inverted <%= "dependent_instruction_#{answer.instruction.id}" %>">
-    <% if answer.correct? %>
-        <div class="timeline-badge success"><i class="fa fa-check"></i>
-        </div>
-    <% elsif answer.incorrect? %>  
-        <div class="timeline-badge warning"><i class="fa fa-times"></i>
-        </div>
-    <% else %>  
-        <div class="timeline-badge info"><i class="fa fa-question"></i>
-        </div>
-    <% end %>    
-    
 
+<div class="timeline-heading">
+    <h4 class="timeline-title">Edit Answer <%= @answer.id %></h4>
+</div>
+<div class="timeline-body">
 
-    <div class="timeline-panel">
-        <div class="timeline-heading">
-            <h4 class="timeline-title">Answer <%= answer.id %></h4>
-        </div>
-        <div class="timeline-body">
-            <% if !answer.text.blank? %>
-                <p><%= answer.text %></p>
-            <% end %>
-            <% if !answer.image_url.blank? %>
-                <img src="<%= answer.image_url %>">
-            <% end %>
-            </br>
-            <div class="<%= "jump_dependent_answer_to_instruction_#{answer.next_instruction.id}" if answer.next_instruction %>">
-            <% if !answer.jump.blank? %>
-            <span class="pull-right text-muted small"><em><a href="#instruction_<%= answer.next_instruction.id %>">Jumps to instruction <%= answer.next_instruction.id %></a></em></span>
-            <% else %>
-                <span class="pull-right text-muted small"><em>Goes to next question if selected</em></span>
-            <% end %>
-            </br>
-            <span class="pull-right text-muted small"><em><%= link_to "edit", edit_answer_path(answer) %> / <%= link_to "delete", answer_path(answer), method: :delete, remote: true %></em></span>
-        </div>
+    <%= form_for @answer, remote: true do |f| %>
+    <%= f.hidden_field :instruction_id, url: instruction_answers_path(@instruction, @answer), value: @instruction.id  %>
+
+    <div class="form-group">
+        <%= f.label :text, class: "control-label" %>
+        <%= f.text_field :text, class: "form-control"  %>
+        <p class="help-block text-muted small">Try to stay below 5 words!</p>
     </div>
-</li>
+    <div class="form-group">
+        <%= f.label :image_url, class: "control-label" %>
+        <%= f.text_field :image_url, class: "form-control"  %>
+        <p class="help-block text-muted small">Or add an image here to stay funky.</p>
+    </div>
 
+    <div class="form-group">
+        <%= f.label :correct, 'Correct answer', class: "control-label" %>
+        <%= f.radio_button(:correct, true) %>
+    </div>  
+    <div class="form-group">
+        <%= f.label :correct, 'Wrong answer', class: "control-label" %>
+        <%= f.radio_button(:correct, false) %>
+    </div>  
+    <p class="help-block text-muted small">This display a different visual feeback when the answer is chosen</p>
+    <p class="help-block text-muted small">"Neither" is not available if you've chosen something else before. Delete your answer and create a new one</p>
+
+    <div class="form-group">
+        <%= f.submit 'Save', class: 'btn btn-success' %>
+    </div>
+    <% end %>
+
+
+    </br>
+    <hr>
+    <div class="<%= "jump_dependent_answer_to_instruction_#{@answer.next_instruction.id}" if @answer.next_instruction %>">
+        <% if !@answer.jump.blank? %>
+        <span class="pull-right text-muted small"><em><a href="#instruction_<%= @answer.next_instruction.id %>">Jumps to instruction <%= @answer.next_instruction.id %></a></em></span>
+        <% else %>
+        <span class="pull-right text-muted small"><em>Goes to next question if selected</em></span>
+        <% end %>
+        </br>
+        <span class="pull-right text-muted small"><em><%= link_to "edit", edit_answer_path(@answer) %> / <%= link_to "delete", answer_path(@answer), method: :delete, remote: true %></em></span>
+    </div>
+
+</div>

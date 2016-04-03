@@ -1,0 +1,1 @@
+$("#instruction_<%= @instruction.id %>").replaceWith("<%= escape_javascript render partial: 'instructions/show', locals: {instruction: @instruction} %>");

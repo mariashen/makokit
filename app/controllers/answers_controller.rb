@@ -23,13 +23,20 @@ class AnswersController < ApplicationController
 		@instruction = @answer.instruction
 		@jump = @answer.jump
 		@jump ||= AnswerJump.new()
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 
 	def update
 		@answer = Answer.find(params[:id])	
 		@answer.update_attributes(answer_params)
-		redirect_to edit_lesson_path(@answer.instruction.lesson)
+		respond_to do |format|
+			format.html { redirect_to edit_lesson_path(@answer.instruction.lesson) }
+			format.js
+		end
 	end
 
 

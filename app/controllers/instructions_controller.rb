@@ -2,9 +2,31 @@ class InstructionsController < ApplicationController
 
 
 	def create
-		instruction = Instruction.new(instruction_params)
-		instruction.save
-		redirect_to edit_lesson_path(instruction.lesson)
+		@instruction = Instruction.new(instruction_params)
+		@instruction.save
+		@lesson = @instruction.lesson
+		respond_to do |format|
+			format.html { redirect_to edit_lesson_path(@lesson) }
+			format.js { @new_instruction = Instruction.new() }
+		end
+	end
+
+	def edit
+		@instruction = Instruction.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
+
+	def update
+		@instruction = Instruction.find(params[:id])
+		@instruction.update_attributes(instruction_params)
+		respond_to do |format|
+			format.html { redirect_to edit_lesson_path( @instruction.lesson) }
+			format.js
+		end
 	end
 
 
