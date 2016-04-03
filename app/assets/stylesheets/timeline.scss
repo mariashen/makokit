@@ -1,3 +1,29 @@
+
+$orangeMako: rgb(238,106,59);
+
+$beige: #eeeeed;
+$lemon: #f2ea00;
+$yellow: #ffd95e;
+$amber: #ebce13;
+$orange: #f0aa14; 
+$sunset: #f08630; 
+
+$strawberry: #D1004C;
+$red: #EA2E49;
+$fuschia: #EC3D92;
+$purple: #bd90f0;
+$indigo: #9092f0;
+$blue: #2982be; 
+$sky: #7fbadc; 
+$aqua: #00B2EE;
+$green: #91d271;
+$lime: #71b251;
+$navy: #0D679C;
+$silver: #555;
+$chocolate: #8A5C00;
+
+
+
 .timeline {
     position: relative;
     padding: 20px 0 20px;
@@ -110,23 +136,23 @@
 }
 
 .timeline-badge.primary {
-    background-color: #2e6da4 !important;
+    background-color: $blue !important;
 }
 
 .timeline-badge.success {
-    background-color: #3f903f !important;
+    background-color: $green !important;
 }
 
 .timeline-badge.warning {
-    background-color: #f0ad4e !important;
+    background-color: $amber !important;
 }
 
 .timeline-badge.danger {
-    background-color: #d9534f !important;
+    background-color: $strawberry !important;
 }
 
 .timeline-badge.info {
-    background-color: #5bc0de !important;
+    background-color: $sky !important;
 }
 
 .timeline-title {

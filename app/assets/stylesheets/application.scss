@@ -13,11 +13,12 @@
  *= require_self
  *= require_tree .
  *= require static_pages
+ *= require sb-admin-2
  */
 
 
 
-$orangeMako: #eb3812;
+$orangeMako: rgb(238,106,59);
 
 $beige: #eeeeed;
 $lemon: #f2ea00;
@@ -1417,7 +1418,7 @@ a.text-warning:focus {
   color: #66512c;
 }
 .text-danger {
-  color: #a94442;
+  color: $danger;
 }
 a.text-danger:hover,
 a.text-danger:focus {
@@ -1453,7 +1454,7 @@ a.bg-warning:focus {
   background-color: #f7ecb5;
 }
 .bg-danger {
-  background-color: #f2dede;
+  background-color: $danger;
 }
 a.bg-danger:hover,
 a.bg-danger:focus {
@@ -3397,8 +3398,8 @@ fieldset[disabled] .btn-warning.focus {
 }
 .btn-danger {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: $danger;
+  border-color: $danger;
 }
 .btn-danger:focus,
 .btn-danger.focus {
@@ -3449,7 +3450,7 @@ fieldset[disabled] .btn-danger.focus {
   border-color: #d43f3a;
 }
 .btn-danger .badge {
-  color: #d9534f;
+  color: $danger;
   background-color: #fff;
 }
 .btn-link {
@@ -4957,7 +4958,7 @@ a.label:focus {
   background-color: #ec971f;
 }
 .label-danger {
-  background-color: #d9534f;
+  background-color: $danger;
 }
 .label-danger[href]:hover,
 .label-danger[href]:focus {
@@ -5144,7 +5145,7 @@ a.thumbnail.active {
 }
 .alert-danger {
   color: #a94442;
-  background-color: #f2dede;
+  background-color: $danger;
   border-color: #ebccd1;
 }
 .alert-danger hr {
@@ -5240,7 +5241,7 @@ a.thumbnail.active {
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
 }
 .progress-bar-danger {
-  background-color: #d9534f;
+  background-color: $danger;
 }
 .progress-striped .progress-bar-danger {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
@@ -5465,7 +5466,7 @@ button.list-group-item-warning.active:focus {
   border-color: #8a6d3b;
 }
 .list-group-item-danger {
-  color: #a94442;
+  color: $danger;
   background-color: #f2dede;
 }
 a.list-group-item-danger,

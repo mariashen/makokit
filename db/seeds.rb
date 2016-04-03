@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+4.times do |i|
+
+	instruction = Instruction.create(text: "Seeded instruction number #{i}", lesson_id: Lesson.first.id )
+	3.times do |j|
+		instruction.answers.build(text: "Answer #{j} to instruction #{instruction.id}").save
+	end
+
+end
+
+
+

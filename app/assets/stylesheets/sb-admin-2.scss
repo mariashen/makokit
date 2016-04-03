@@ -6,11 +6,56 @@
 
 
 
-body {
+$orangeMako: rgb(238,106,59);
+
+$beige: #eeeeed;
+$lemon: #f2ea00;
+$yellow: #ffd95e;
+$amber: #ebce13;
+$orange: #f0aa14; 
+$sunset: #f08630; 
+
+$strawberry: #D1004C;
+$red: #EA2E49;
+$fuschia: #EC3D92;
+$purple: #bd90f0;
+$indigo: #9092f0;
+$blue: #2982be; 
+$sky: #7fbadc; 
+$aqua: #00B2EE;
+$green: #91d271;
+$lime: #71b251;
+$navy: #0D679C;
+$silver: #555;
+$chocolate: #8A5C00;
+
+
+$success: #2f2;
+$info: #9092f0;
+$warning: #f08630;
+$danger: #D1004C;
+
+
+body #application-body{
     background-color: #444;
-    h1,h2,h3{
-        color: $orangeMako;
-    }
+    font-family: Merriweather,'Open Sans','Helvetica Neue',Arial,sans-serif;        
+}
+
+h1.page-header {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: .25em;
+    color: $sunset;
+}
+
+.page-header-description {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: $silver;
 }
 
 #wrapper {
@@ -30,6 +75,14 @@ body {
         padding: 0 30px;
         border-left: 1px solid #e7e7e7;
     }
+}
+
+
+.navbar-header{
+    img {
+        max-height: 100%;
+    }
+
 }
 
 .navbar-top-links {
@@ -90,6 +143,10 @@ body {
     left: auto;
 }
 
+.sidebar *{
+    color: $sky !important;
+}
+
 .sidebar .sidebar-nav.navbar-collapse {
     padding-right: 0;
     padding-left: 0;
@@ -101,6 +158,10 @@ body {
 
 .sidebar ul li {
     border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a{
+    color: $orangeMako;
 }
 
 .sidebar ul li a.active {
@@ -162,15 +223,15 @@ body {
 }
 
 .btn-info.btn-outline {
-    color: #5bc0de;
+    color: $info;
 }
 
 .btn-warning.btn-outline {
-    color: #f0ad4e;
+    color: $warning;
 }
 
 .btn-danger.btn-outline {
-    color: #d9534f;
+    color: $danger;
 }
 
 .btn-primary.btn-outline:hover,
@@ -305,55 +366,74 @@ table.dataTable thead .sorting:after {
 }
 
 .panel-green {
-    border-color: #5cb85c;
+    border-color: $green;
 }
 
 .panel-green .panel-heading {
-    border-color: #5cb85c;
+    border-color: $green;
     color: #fff;
-    background-color: #5cb85c;
+    background-color: $green;
 }
 
 .panel-green a {
-    color: #5cb85c;
+    color: $green;
 }
 
 .panel-green a:hover {
-    color: #3d8b3d;
+    color: $lime;
 }
 
 .panel-red {
-    border-color: #d9534f;
+    border-color: $strawberry;
 }
 
 .panel-red .panel-heading {
-    border-color: #d9534f;
+    border-color: $strawberry;
     color: #fff;
-    background-color: #d9534f;
+    background-color: $strawberry;
 }
 
 .panel-red a {
-    color: #d9534f;
+    color: $strawberry;
 }
 
 .panel-red a:hover {
-    color: #b52b27;
+    color: $red;
 }
 
 .panel-yellow {
-    border-color: #f0ad4e;
+    border-color: $amber;
 }
 
 .panel-yellow .panel-heading {
-    border-color: #f0ad4e;
+    border-color: $amber;
     color: #fff;
-    background-color: #f0ad4e;
+    background-color: $amber;
 }
 
 .panel-yellow a {
-    color: #f0ad4e;
+    color: $amber;
 }
 
 .panel-yellow a:hover {
-    color: #df8a13;
+    color: $sunset;
+}
+
+
+.panel-blue {
+    border-color: $sky;
+}
+
+.panel-blue .panel-heading {
+    border-color: $sky;
+    color: #fff;
+    background-color: $sky;
+}
+
+.panel-blue a {
+    color: $sky;
+}
+
+.panel-blue a:hover {
+    color: $blue;
 }
