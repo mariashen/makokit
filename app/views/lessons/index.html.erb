@@ -6,13 +6,10 @@
 </div>
 
 
+<div class="row">
+<% index = 1 %>
 
-<% @lessons.each_with_index do |lesson, index| %>
-
-<% if (index % 3 == 0) %>
-    <!-- /.row -->
-    <div class="row">
-<% end %>
+<% @lessons.each do |lesson| %>
 
 
     <div class="col-lg-4">
@@ -30,17 +27,18 @@
         </div>
         <!-- /.col-lg-4 -->
     </div>
-    
 
-<% if (index % 3 == 0) %>
-    </div>
-    <!-- /.row -->
+    <% if (index % 3 == 0) %>
+        </div>
+        <!-- End Row -->
+        <!-- Begin Row -->
+        <div class="row">
+    <% end %>
+    <% index += 1 %>
+
 <% end %>
 
-
-<% end %>
-
-
+</div>
 
 <div class="row">
     <div class="col-lg-4">
