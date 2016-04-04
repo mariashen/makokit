@@ -4,6 +4,37 @@
 
 
 
+
+$orangeMako: rgb(238,106,59);
+
+$beige: #eeeeed;
+$lemon: #f2ea00;
+$yellow: #ffd95e;
+$amber: #ebce13;
+$orange: #f0aa14; 
+$sunset: #f08630; 
+
+$strawberry: #D1004C;
+$red: #EA2E49;
+$fuschia: #EC3D92;
+$purple: #bd90f0;
+$indigo: #9092f0;
+$blue: #2982be; 
+$sky: #7fbadc; 
+$aqua: #00B2EE;
+$green: #91d271;
+$lime: #71b251;
+$navy: #0D679C;
+$silver: #555;
+$chocolate: #8A5C00;
+
+
+$success: #2f2;
+$info: #9092f0;
+$warning: #f08630;
+$danger: #D1004C;
+
+
 html,
 body {
     width: 100%;
@@ -16,7 +47,7 @@ body {
 
 hr {
     max-width: 50px;
-    border-color: #f05f40;
+    border-color: $orangeMako;
     border-width: 3px;
 }
 
@@ -25,7 +56,7 @@ hr.light {
 }
 
 a {
-    color: #f05f40;
+    color: $orangeMako;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -52,7 +83,7 @@ p {
 }
 
 .bg-primary {
-    background-color: #f05f40;
+    background-color: $orangeMako;
 }
 
 .bg-dark {
@@ -89,7 +120,7 @@ aside {
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
-    color: #f05f40;
+    color: $orangeMako;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -107,12 +138,12 @@ aside {
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: #f05f40;
+    color: $orangeMako;
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: #f05f40;
+    color: $orangeMako;
     background-color: transparent;
 }
 
@@ -154,7 +185,7 @@ aside {
 
     .navbar-default.affix .navbar-header .navbar-brand {
         font-size: 14px;
-        color: #f05f40;
+        color: $orangeMako;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -169,7 +200,7 @@ aside {
 
     .navbar-default.affix .nav > li>a:hover,
     .navbar-default.affix .nav>li>a:focus:hover {
-        color: #f05f40;
+        color: $orangeMako;
     }
 }
 
@@ -324,7 +355,7 @@ header .header-content .header-content-inner p {
 }
 
 .text-primary {
-    color: #f05f40;
+    color: $orangeMako;
 }
 
 .no-gutter > [class*=col-] {
@@ -386,9 +417,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-    border-color: #f05f40;
+    border-color: $orangeMako;
     color: #fff;
-    background-color: #f05f40;
+    background-color: $orangeMako;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -429,12 +460,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #f05f40;
-    background-color: #f05f40;
+    border-color: $orangeMako;
+    background-color: $orangeMako;
 }
 
 .btn-primary .badge {
-    color: #f05f40;
+    color: $orangeMako;
     background-color: #fff;
 }
 
