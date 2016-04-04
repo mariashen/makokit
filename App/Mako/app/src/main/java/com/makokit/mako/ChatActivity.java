@@ -8,8 +8,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
 
@@ -22,7 +27,7 @@ public class ChatActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.chatView);
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.chatView);
         linearLayout.setGravity(Gravity.BOTTOM);
 
         SQLiteDatabase chatDatabase = openOrCreateDatabase("mako",MODE_PRIVATE,null);
@@ -47,28 +52,51 @@ public class ChatActivity extends ActionBarActivity {
             createTextView(linearLayout, text, left);
         }
 
+        final ScrollView scrollView = (ScrollView) findViewById(R.id.scrollChat);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
+        
+        Button btnSend = (Button) findViewById(R.id.btnSend);
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText txtSend = (EditText) findViewById(R.id.txtSend);
+                sendText(txtSend.getText().toString());
+                txtSend.setText("");
+                final ScrollView scrollView = (ScrollView) findViewById(R.id.scrollChat);
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
+                });
+            }
 
-//        for( int i = 0; i < textArray.length; i++ )
-//        {
-//            TextView textView = new TextView(this);
-//            textView.setText(textArray[i]);
-//            if (i%2 == 0) {
-//                textView.setBackgroundResource(R.drawable.bubble);
-//                textView.setPadding(100, 0, 0, 0);
-//            }
-//            else {
-//                textView.setBackgroundResource(R.drawable.bubble2);
-//                textView.setPadding(0, 0, 100, 0);
-//                textView.setGravity(Gravity.RIGHT);
-//            }
-//            textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200));
-//            textView.setHeight(200);
-//            linearLayout.addView(textView);
-//
-//            Space space = new Space(this);
-//            space.setMinimumHeight(50);
-//            linearLayout.addView(space);
-//        }
+            private void sendText(String txtSend) {
+                SQLiteDatabase chatDatabase = openOrCreateDatabase("mako",MODE_PRIVATE,null);
+                chatDatabase.execSQL("INSERT INTO Chat VALUES('" + txtSend + "');");
+
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.chatView);
+                linearLayout.removeAllViews();
+
+                Cursor resultSet = chatDatabase.rawQuery("Select * from Chat", null);
+                resultSet.moveToFirst();
+
+                String text = resultSet.getString(0);
+                Boolean left = true;
+                createTextView(linearLayout, text, left);
+
+                while (resultSet.moveToNext()) {
+                    text = resultSet.getString(0);
+                    left = !left;
+                    createTextView(linearLayout, text, left);
+                }
+            }
+        });
     }
 
     @Override
