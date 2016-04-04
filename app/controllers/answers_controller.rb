@@ -20,7 +20,6 @@ class AnswersController < ApplicationController
 
 	def show
 		@answer = Answer.find(params[:id])	
-		#@instruction = @answer.instruction
 		respond_to do |format|
 			format.html
 			format.js
