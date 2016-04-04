@@ -20,6 +20,10 @@ class LessonsController < ApplicationController
 	def edit
 		@lesson = Lesson.find(params[:id])
 		@new_instruction = Instruction.new()
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def index

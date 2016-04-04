@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
 		@instruction = Instruction.find(params[:instruction_id])
 		@answer = @instruction.answers.build(answer_params)
 		@answer.save
-		redirect_to edit_lesson_path(@answer.instruction.lesson)
+		redirect_to edit_lesson_path(@answer.instruction.lesson), status: 303
 	end
 
 
