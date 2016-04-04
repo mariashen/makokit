@@ -7,7 +7,7 @@
 
 <p class="help-block">Add an answer</p>
 
-<%= form_for @answer, url: instruction_answers_path(@instruction) do |f| %>
+<%= form_for @answer, url: instruction_answers_path(@instruction), remote: true do |f| %>
     <div class="form-group">
         <%= f.label :text, class: "control-label" %>
         <%= f.text_field :text, class: "form-control"  %>

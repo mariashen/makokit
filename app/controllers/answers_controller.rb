@@ -18,6 +18,15 @@ class AnswersController < ApplicationController
 	end
 
 
+	def show
+		@answer = Answer.find(params[:id])	
+		#@instruction = @answer.instruction
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
 	def edit
 		@answer = Answer.find(params[:id])	
 		@instruction = @answer.instruction

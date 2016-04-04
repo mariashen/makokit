@@ -1,1 +1,1 @@
-$("#answer_<%= @answer.id %> .timeline-panel").html("<%= escape_javascript render partial: 'answers/edit' %>");
+$("#answer_<%= @answer.id %>").replaceWith("<%= escape_javascript render partial: 'answers/edit' %>");
