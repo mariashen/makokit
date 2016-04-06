@@ -1,0 +1,17 @@
+<%= form_for @jump, remote: true do |f| %>
+    <%= f.hidden_field :answer_id, value: @answer.id  %>
+    <% if !@jump.new_record? %>
+        <span class="pull-right text-muted small"><em><a href="#instruction_<%= @answer.next_instruction.id %>">Jumps to instruction <%= @answer.next_instruction.id %></a></em></span>
+        <% else %>
+        <span class="pull-right text-muted small"><em>Goes to next instruction if selected</em></span>
+    <% end %>
+    </br>
+    <div class="form-group">
+        <%= f.label :instruction_id, class: "control-label" %>
+        <%= f.select(:instruction_id, options_for_select(@answer.instruction.lesson.instructions.map{|i| ["#{i.id}: #{i.text}", i.id] }) , class: "form-control") %>
+    </div>                            
+    <div class="form-group">
+        <%= f.submit 'Save', class: 'btn btn-xs btn-success' %>
+    </div>
+    <span class="text-primary"><%= link_to "cancel", answer_path(@answer), remote: true %></a></em></span>
+<% end %>

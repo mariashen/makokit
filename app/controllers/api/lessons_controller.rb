@@ -18,6 +18,10 @@ class Api::LessonsController < ApplicationController
 	end
 
 
+	def index
+		render json: Lesson.all
+	end
+
 
 
 end
