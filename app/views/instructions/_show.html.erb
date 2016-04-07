@@ -19,6 +19,8 @@
                     <% end %>
                     <hr>
                     <span class="pull-right text-muted small"><em><%= link_to "Edit", edit_instruction_path(instruction), remote: true %> / <%= link_to "Add answer", new_instruction_answer_path(instruction), remote: true %> / <%= link_to "Delete", instruction_path(instruction), method: :delete, remote: true, data: {confirm: "Are you sure?"} %></em></span>
+                    <br/>
+                    <span class="pull-right text-muted small"><em>next instr: <%= instruction.next_instruction_id %></em></span>
                 </div>
             </div>
         </div>
