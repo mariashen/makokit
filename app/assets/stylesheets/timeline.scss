@@ -41,6 +41,7 @@ $chocolate: #8A5C00;
     background-color: #eeeeee;
 }
 
+
 .timeline > li {
     position: relative;
     margin-bottom: 20px;
@@ -167,6 +168,10 @@ $chocolate: #8A5C00;
 
 .timeline-body > p + p {
     margin-top: 5px;
+}
+
+.timeline-body img{
+    max-width: 100%;
 }
 
 @media(max-width:767px) {
