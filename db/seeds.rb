@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+Lesson.create(name: "First lesson")
+
 4.times do |i|
 
 	instruction = Instruction.create(text: "Seeded instruction number #{i}", lesson_id: Lesson.first.id )

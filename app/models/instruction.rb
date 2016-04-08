@@ -8,7 +8,7 @@ class Instruction < ActiveRecord::Base
 	after_create do 
 		last_index = self.collection.last_index
 		self.update_attribute(:display_index, last_index) 
-		self.collection.find_by(:display_index, last_index - 1).update_attribute(:next_instruction_id, self.id) if last_index > 0
+		self.collection.find_by(display_index: last_index - 1).update_attribute(:next_instruction_id, self.id) if last_index > 0
 	end
 	after_destroy { self.collection.reorder_indices }
 
