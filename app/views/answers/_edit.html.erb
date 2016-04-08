@@ -38,11 +38,10 @@
                 <%= f.label :correct, 'Wrong answer', class: "control-label" %>
                 <%= f.radio_button(:correct, false) %>
             </div>  
-            <p class="help-block text-muted small">This display a different visual feeback when the answer is chosen</p>
-            <p class="help-block text-muted small">"Neither" is not available if you've chosen something else before. Delete your answer and create a new one</p>
+            <p class="help-block text-muted small">This displays a different visual feeback when the answer is chosen.</p>
 
             <div class="form-group">
-                <%= f.submit 'Save', class: 'btn btn-success' %>
+                <%= f.submit 'Save', class: 'btn btn-xs btn-success' %>
             </div>
             <% end %>
 

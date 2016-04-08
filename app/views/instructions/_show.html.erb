@@ -1,14 +1,14 @@
-<li id="instruction_<%= instruction.id %>">
-    <div class="timeline-badge info"><i class="fa fa-graduation-cap"></i>
+<li class="instruction" id="instruction_<%= instruction.id %>">
+    <div class="timeline-badge info"><i class="timeline-index fa fa-graduation-cap"></i><span class="timeline-index"><%= instruction.display_index %></span>
     </div>
     <div class="timeline-panel">
         <div class="timeline-heading">
-            <h4 class="timeline-title">Instruction <%= instruction.id %></h4>
+            <h4 class="timeline-title"><%= instruction.text %></h4>
         </div>
         <div class="timeline-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <% if !instruction.text.blank? %>
+                    <% if false && !instruction.text.blank? %>
                         <p><%= instruction.text %></p>
                     <% end %>
                     <% if !instruction.image_url.blank? %>
@@ -20,7 +20,7 @@
                     <hr>
                     <span class="pull-right text-muted small"><em><%= link_to "Edit", edit_instruction_path(instruction), remote: true %> / <%= link_to "Add answer", new_instruction_answer_path(instruction), remote: true %> / <%= link_to "Delete", instruction_path(instruction), method: :delete, remote: true, data: {confirm: "Are you sure?"} %></em></span>
                     <br/>
-                    <span class="pull-right text-muted small"><em>next instr: <%= instruction.next_instruction_id %></em></span>
+                    <span class="pull-right text-muted small"><em>position: <%= instruction.display_index %> (<%= link_to "move", edit_instruction_path(instruction), remote: true %>)</em></span>
                 </div>
             </div>
         </div>

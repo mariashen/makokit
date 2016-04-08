@@ -14,24 +14,23 @@
 
     <div class="timeline-panel">
         <div class="timeline-heading">
-            <h4 class="timeline-title">Answer <%= answer.id %></h4>
+            <h4 class="timeline-title"><%= answer.text %></h4>
         </div>
         <div class="timeline-body">
 
             <div class="row">
                 <div class="col-lg-12">
-                    <% if !answer.text.blank? %>
+                    <% if false && !answer.text.blank? %>
                         <p><%= answer.text %></p>
                     <% end %>
                     <% if !answer.image_url.blank? %>
                         <img src="<%= answer.image_url %>">
+                        </br>
                     <% end %>
-                    </br>
                     <span class="pull-right text-muted small"><em><%= link_to "edit", edit_answer_path(answer), remote: true %> / <%= link_to "delete", answer_path(answer), method: :delete, remote: true %></em></span> 
                      </br>
                 </div>
             </div>
-            <hr>
             <div class="row">
                 <div class="col-lg-12" id="answer_<%= answer.id %>_jump">
                     <div class="<%= "jump_dependent_answer_to_instruction_#{answer.next_instruction.id}" if answer.next_instruction %>">

@@ -116,6 +116,17 @@ $chocolate: #8A5C00;
     line-height: 50px;
     color: #fff;
     background-color: #999999;
+    span.timeline-index{
+        display: none;
+    }
+    &:hover{
+        i.timeline-index{
+            display: none;
+        }
+        span.timeline-index{
+            display: block;
+        }
+    }
 }
 
 .timeline > li.timeline-inverted > .timeline-panel {

@@ -25,7 +25,7 @@ class InstructionsController < ApplicationController
 		@instruction.update_attributes(instruction_params)
 		respond_to do |format|
 			format.html { redirect_to edit_lesson_path( @instruction.lesson) }
-			format.js
+			format.js { redirect_to edit_lesson_path(@instruction.lesson), status: 303}
 		end
 	end
 
@@ -35,7 +35,7 @@ class InstructionsController < ApplicationController
 		@instruction = Instruction.find(params[:id]).destroy
 		respond_to do |format|
 			format.html { redirect_to edit_lesson_path( instruction.lesson) }
-			format.js
+			format.js { redirect_to edit_lesson_path(@instruction.lesson), status: 303 }
 		end
 	end
 
@@ -44,6 +44,6 @@ class InstructionsController < ApplicationController
 	private
 
 		def instruction_params
-			params.require(:instruction).permit(:lesson_id, :text, :image_url, :video_url)
+			params.require(:instruction).permit(:lesson_id, :text, :image_url, :video_url, :display_index)
 		end
 end
