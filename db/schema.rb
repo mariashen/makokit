@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407232739) do
+ActiveRecord::Schema.define(version: 20160408181903) do
 
   create_table "answer_jumps", force: :cascade do |t|
     t.integer  "answer_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160407232739) do
     t.integer  "version"
     t.string   "category"
     t.text     "description"
+    t.string   "image_url"
   end
 
 end

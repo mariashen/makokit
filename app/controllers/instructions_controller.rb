@@ -6,7 +6,7 @@ class InstructionsController < ApplicationController
 		@instruction.save
 		@lesson = @instruction.lesson
 		respond_to do |format|
-			format.html { redirect_to edit_lesson_path(@lesson) }
+			format.html { redirect_to lesson_path(@lesson) }
 			format.js { @new_instruction = Instruction.new() }
 		end
 	end
@@ -24,8 +24,8 @@ class InstructionsController < ApplicationController
 		@instruction = Instruction.find(params[:id])
 		@instruction.update_attributes(instruction_params)
 		respond_to do |format|
-			format.html { redirect_to edit_lesson_path( @instruction.lesson) }
-			format.js { redirect_to edit_lesson_path(@instruction.lesson), status: 303}
+			format.html { redirect_to lesson_path( @instruction.lesson) }
+			format.js { redirect_to lesson_path(@instruction.lesson), status: 303}
 		end
 	end
 
@@ -34,8 +34,8 @@ class InstructionsController < ApplicationController
 	def destroy
 		@instruction = Instruction.find(params[:id]).destroy
 		respond_to do |format|
-			format.html { redirect_to edit_lesson_path( instruction.lesson) }
-			format.js { redirect_to edit_lesson_path(@instruction.lesson), status: 303 }
+			format.html { redirect_to lesson_path( instruction.lesson) }
+			format.js { redirect_to lesson_path(@instruction.lesson), status: 303 }
 		end
 	end
 
