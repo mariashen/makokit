@@ -35,7 +35,7 @@
                 <div class="col-lg-12" id="answer_<%= answer.id %>_jump">
                     <div class="<%= "jump_dependent_answer_to_instruction_#{answer.next_instruction.id}" if answer.next_instruction %>">
                     <% if !answer.jump.blank? %>
-                        <span class="pull-right text-muted small"><em><a href="#instruction_<%= answer.next_instruction.id %>">Jumps to instruction <%= answer.next_instruction.id %></a> ( <%= link_to "change", edit_answer_jump_path(answer.jump), remote: true %> / <%= link_to "delete", answer_jump_path(answer.jump), method: :delete, remote: true %> )</em></span>
+                        <span class="pull-right text-muted small"><em><a href="#instruction_<%= answer.next_instruction.id %>">Jumps to instruction <%= answer.next_instruction.display_index %></a> ( <%= link_to "change", edit_answer_jump_path(answer.jump), remote: true %> / <%= link_to "delete", answer_jump_path(answer.jump), method: :delete, remote: true %> )</em></span>
                     <% else %>
                         <span class="pull-right text-muted small"><em>Goes to next instruction if selected (<%= link_to "change", new_answer_answer_jump_path(answer), remote: true %>)</em></span>
                     <% end %>

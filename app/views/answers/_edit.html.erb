@@ -48,7 +48,7 @@
             <hr>
             <div class="<%= "jump_dependent_answer_to_instruction_#{@answer.next_instruction.id}" if @answer.next_instruction %>">
                 <% if !@answer.jump.blank? %>
-                <span class="pull-right text-muted small"><em><a href="#instruction_<%= @answer.next_instruction.id %>">Jumps to instruction <%= @answer.next_instruction.id %></a></em></span>
+                <span class="pull-right text-muted small"><em><a href="#instruction_<%= @answer.next_instruction.display_index %>">Jumps to instruction <%= @answer.next_instruction.display_index %></a></em></span>
                 <% else %>
                 <span class="pull-right text-muted small"><em>Goes to next instruction if selected</em></span>
                 <% end %>

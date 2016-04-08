@@ -38,16 +38,16 @@ $danger: #D1004C;
 
 body #application-body{
     background-color: #444;
-    font-family: Merriweather,'Open Sans','Helvetica Neue',Arial,sans-serif;        
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif !important;         
 }
 
 h1.page-header {
-    margin-top: 0px;
+    margin-top: 20px;
     margin-bottom: 30px;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: none;
     font-size: 2em;
-    letter-spacing: .25em;
+    letter-spacing: .05em;
     color: $sunset;
 }
 
@@ -66,6 +66,21 @@ h1.page-header {
     padding: 0 15px;
     min-height: 568px;
     background-color: #fff;
+    #portfolio .row{
+        margin-top: 0px;
+        margin-bottom: 70px;
+    }
+
+    #portfolio .row-title{
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        max-width: 50px;
+        border-color: $sunset;
+        border-width: 3px;
+    }
 }
 
 @media(min-width:768px) {
@@ -74,6 +89,10 @@ h1.page-header {
         margin: 0 0 0 250px;
         padding: 0 30px;
         border-left: 1px solid #e7e7e7;
+        .fullpage{
+            padding: 0 -30px;
+            margin: 0 -30px;
+        }
     }
 }
 

@@ -118,7 +118,9 @@ $chocolate: #8A5C00;
     background-color: #999999;
     span.timeline-index{
         display: none;
+        font-family: 'Quicksand';
     }
+
     &:hover{
         i.timeline-index{
             display: none;

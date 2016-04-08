@@ -14,6 +14,7 @@
         <div class="well well-lg page-header-description">
             <h4>Category: <%= @lesson.category %></h4>
             <p><%= @lesson.description %></p>
+            <p>Last updated <%= time_ago_in_words(@lesson.updated_at) %> ago.</p>
         </div>
     </div>
     <!-- /.col-lg-12 -->

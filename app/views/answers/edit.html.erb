@@ -58,7 +58,7 @@
                             <%= form_for @jump do |f| %>
                                 <%= f.hidden_field :answer_id, value: @answer.id  %>
                                 <% if !@answer.jump.blank? %>
-                                <span class="text-primary">Selecting this answer jumps to instruction <%= @answer.next_instruction.id %></a></em></span>
+                                <span class="text-primary">Selecting this answer jumps to instruction <%= @answer.next_instruction.display_index %></a></em></span>
                                 <% else %>
                                     <span class="text-muted">Selecting this answer starts the instruction immediately after the current instruction</em></span>
                                 <% end %>
@@ -66,7 +66,7 @@
                                 <p class="help-block">Set the logical jump here :</p>
                                 <div class="form-group">
                                     <%= f.label :instruction_id, class: "control-label" %>
-                                    <%= f.select(:instruction_id, options_for_select(@answer.instruction.lesson.instructions.map{|i| ["#{i.id}: #{i.text}", i.id] }) , class: "form-control") %>
+                                    <%= f.select(:instruction_id, options_for_select(@answer.instruction.lesson.instructions.map{|i| ["#{i.display_index}: #{i.text}", i.id] }) , class: "form-control") %>
                                     <p class="help-block text-muted small">Try to stay below 5 words!</p>
                                 </div>                            
                                 <div class="form-group">

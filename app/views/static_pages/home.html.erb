@@ -22,6 +22,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <%= link_to "Lessons", lessons_path %>
+                    </li>
+                    <li>
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
@@ -43,10 +46,10 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Learn Science using Science</h1>
+                <h1>Easy Interactive Instructions </h1>
                 <hr>
-                <p>MAKOKIT teaches children, ages 10 - 18, in developing economies key physics, math, and programming concepts through their mobile devices and hardware components, allowing them to get hands on experience and stay competitive in STEM fields.</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <p></p>
+                <%= link_to "Access Lessons", lessons_path, class: 'btn btn-primary btn-xl' %>
             </div>
         </div>
     </header>
@@ -220,6 +223,9 @@
                     <h2 class="section-heading">You're a teacher and want to contribute?</h2>
                     <hr class="primary">
                     <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+
+                    <%= link_to "Build Lessons", lessons_path, class: "btn btn-primary btn-xl wow fadeIn" %>
+
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x wow bounceIn"></i>
