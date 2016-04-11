@@ -1,0 +1,48 @@
+<li id="instruction_<%= instruction.id %>">
+    <div class="timeline-badge info"><i class="timeline-index fa fa-graduation-cap"></i><span class="timeline-index"><%= instruction.display_index %></span>
+    </div>  
+    <div class="timeline-panel">
+        <div class="timeline-heading">
+            <h4 class="timeline-title"><%= instruction.display_index %> - Edit</h4>
+        </div>
+        <div class="timeline-body">
+            <%= form_for @instruction, remote: true do |f| %>
+                <div class="form-group">
+                    <%= f.label :text, class: "control-label" %>
+                    <%= f.text_field :text, class: "form-control"  %>
+                    <p class="help-block text-muted small">Try to stay below 5 words!</p>
+                </div>
+                <div class="form-group">
+                    <%= f.label :image_url, class: "control-label" %>
+                    <%= f.text_field :image_url, class: "form-control"  %>
+                    <p class="help-block text-muted small">Or add an image here to stay funky.</p>
+                </div>
+                <div class="form-group">
+                    <%= f.label :video_url, class: "control-label" %>
+                    <%= f.text_field :video_url, class: "form-control"  %>
+                    <p class="help-block text-muted small">Or add an image here to stay funky.</p>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit 'Save', class: 'btn btn-xs btn-success' %>
+                </div>
+            <% end %>
+            <hr>
+
+            <%= form_for @instruction, remote: true do |f| %>
+                <br/>
+                <span class="pull-right text-muted small"><em>position: <%= instruction.display_index %> (<%= link_to "move", edit_instruction_path(instruction), remote: true %>)</em></span>
+
+                <div class="form-group">
+                    <%= f.label :display_index, 'Move to this position:', class: "control-label" %>
+                    <%= f.select(:display_index, options_for_select(@instruction.available_indices_to_move_to.map{|x| [x,x]} ) , class: "form-control") %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit 'move', class: 'btn btn-xs btn-success' %>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</li>

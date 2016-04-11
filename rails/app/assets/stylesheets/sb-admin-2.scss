@@ -1,0 +1,458 @@
+/*!
+ * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+
+
+$orangeMako: rgb(238,106,59);
+
+$beige: #eeeeed;
+$lemon: #f2ea00;
+$yellow: #ffd95e;
+$amber: #ebce13;
+$orange: #f0aa14; 
+$sunset: #f08630; 
+
+$strawberry: #D1004C;
+$red: #EA2E49;
+$fuschia: #EC3D92;
+$purple: #bd90f0;
+$indigo: #9092f0;
+$blue: #2982be; 
+$sky: #7fbadc; 
+$aqua: #00B2EE;
+$green: #91d271;
+$lime: #71b251;
+$navy: #0D679C;
+$silver: #555;
+$chocolate: #8A5C00;
+
+
+$success: #2f2;
+$info: #9092f0;
+$warning: #f08630;
+$danger: #D1004C;
+
+
+body #application-body{
+    background-color: #444;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif !important;         
+}
+
+h1.page-header {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: none;
+    font-size: 2em;
+    letter-spacing: .05em;
+    color: $sunset;
+}
+
+.page-header-description {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: $silver;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+    #portfolio .row{
+        margin-top: 0px;
+        margin-bottom: 70px;
+    }
+
+    #portfolio .row-title{
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        max-width: 50px;
+        border-color: $sunset;
+        border-width: 3px;
+    }
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+        .fullpage{
+            padding: 0 -30px;
+            margin: 0 -30px;
+        }
+    }
+}
+
+
+.navbar-header{
+    img {
+        max-height: 100%;
+    }
+
+}
+
+.navbar-top-links {
+    margin-right: 0;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+    margin-right: 15px;
+}
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+    margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+    margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+.sidebar *{
+    color: $sky !important;
+}
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a{
+    color: $orangeMako;
+}
+
+.sidebar ul li a.active {
+    background-color: #eee;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+.btn-outline {
+    color: inherit;
+    background-color: transparent;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: $success;
+}
+
+.btn-info.btn-outline {
+    color: $info;
+}
+
+.btn-warning.btn-outline {
+    color: $warning;
+}
+
+.btn-danger.btn-outline {
+    color: $danger;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+
+.chat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #999;
+}
+
+.chat li.left .chat-body {
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+    margin-right: 60px;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+}
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
+}
+
+.chat-panel .panel-body {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.login-panel {
+    margin-top: 25%;
+}
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    background: 0 0;
+}
+
+table.dataTable thead .sorting_asc:after {
+    content: "\f0de";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.dataTable thead .sorting_desc:after {
+    content: "\f0dd";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.dataTable thead .sorting:after {
+    content: "\f0dc";
+    float: right;
+    font-family: fontawesome;
+    color: rgba(50,50,50,.5);
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.show-grid [class^=col-] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #ddd;
+    background-color: #eee!important;
+}
+
+.show-grid {
+    margin: 15px 0;
+}
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: $green;
+}
+
+.panel-green .panel-heading {
+    border-color: $green;
+    color: #fff;
+    background-color: $green;
+}
+
+.panel-green a {
+    color: $green;
+}
+
+.panel-green a:hover {
+    color: $lime;
+}
+
+.panel-red {
+    border-color: $strawberry;
+}
+
+.panel-red .panel-heading {
+    border-color: $strawberry;
+    color: #fff;
+    background-color: $strawberry;
+}
+
+.panel-red a {
+    color: $strawberry;
+}
+
+.panel-red a:hover {
+    color: $red;
+}
+
+.panel-yellow {
+    border-color: $amber;
+}
+
+.panel-yellow .panel-heading {
+    border-color: $amber;
+    color: #fff;
+    background-color: $amber;
+}
+
+.panel-yellow a {
+    color: $amber;
+}
+
+.panel-yellow a:hover {
+    color: $sunset;
+}
+
+
+.panel-blue {
+    border-color: $sky;
+}
+
+.panel-blue .panel-heading {
+    border-color: $sky;
+    color: #fff;
+    background-color: $sky;
+}
+
+.panel-blue a {
+    color: $sky;
+}
+
+.panel-blue a:hover {
+    color: $blue;
+}

@@ -1,0 +1,12 @@
+<ul class="timeline" id="instruction_timeline">
+
+    <% @lesson.instructions.each do |instruction| %>
+        <%= render partial: "instructions/show", locals:{ instruction: instruction } %>
+        <% instruction.answers.each do |answer| %>
+            <%= render partial: "answers/show", locals:{ answer: answer } %>
+        <% end %>
+    <% end %>
+
+    <%= render partial: "instructions/new" %>
+
+</ul>

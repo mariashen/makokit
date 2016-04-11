@@ -1,0 +1,10 @@
+
+
+
+
+$(".jump_dependent_answer_to_instruction_<%= @instruction.id %>").html('<span class="pull-right text-muted small"><em>Goes to next question if selected</em></span>');
+
+$("#instruction_<%= @instruction.id %>").fadeOut("slow");
+$(".dependent_instruction_<%= @instruction.id %>").fadeOut("slow");
+
+

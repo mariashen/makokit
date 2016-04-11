@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Edit instruction</h1>
+    </div>
+
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Instruction <%= @instruction.id  %>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <%= form_for @instruction do |f| %>
+
+                                <div class="form-group">
+                                    <%= f.label :text, class: "control-label" %>
+                                    <%= f.text_field :text, class: "form-control"  %>
+                                    <p class="help-block text-muted small">Try to stay below 5 words!</p>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.label :image_url, class: "control-label" %>
+                                    <%= f.text_field :image_url, class: "form-control"  %>
+                                    <p class="help-block text-muted small">Or add an image here to stay funky.</p>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.label :video_url, class: "control-label" %>
+                                    <%= f.text_field :video_url, class: "form-control"  %>
+                                    <p class="help-block text-muted small">Or add an image here to stay funky.</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <%= f.submit 'Save', class: 'btn btn-success' %>
+                                </div>
+                            <% end %>
+
+                        </div>
+                        <!-- 
+                            f.label :instruction_id, class: "control-label" 
+                            f.select(:instruction_id, options_for_select(@answer.instruction.lesson.instructions.map{|i| ["#{i.id}: #{i.text}", i.id] }) , class: "form-control") 
+                        -->
+                            
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <!-- /.col-lg-12 -->
+</div>
+
