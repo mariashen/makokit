@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
 		@answer = @instruction.answers.build(answer_params)
 		@answer.save
 		respond_to do |format|
-			format.html { redirect_to edit_lesson_path(@instruction.lesson) }
+			format.html { redirect_to lesson_path(@instruction.lesson) }
 			format.js
 		end
 	end
@@ -45,7 +45,7 @@ class AnswersController < ApplicationController
 		@answer = Answer.find(params[:id])	
 		@answer.update_attributes(answer_params)
 		respond_to do |format|
-			format.html { redirect_to edit_lesson_path(@answer.instruction.lesson) }
+			format.html { redirect_to lesson_path(@answer.instruction.lesson) }
 			format.js
 		end
 	end
@@ -54,7 +54,7 @@ class AnswersController < ApplicationController
 	def destroy
 		@answer = Answer.find(params[:id]).destroy
 		respond_to do |format|
-			format.html { redirect_to edit_lesson_path(@answer.instruction.lesson) }
+			format.html { redirect_to lesson_path(@answer.instruction.lesson) }
 			format.js
 		end
 	end
