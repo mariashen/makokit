@@ -7,31 +7,41 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.makokit.mako.ChatActivity"
+    tools:context="com.makokit.mako.LessonActivity"
     android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_weight="50"
+        android:src="@drawable/logo" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:layout_weight="50" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollChat"
+        android:id="@+id/scrollView2"
         android:layout_weight="1000">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/chatView">
+            android:id="@+id/layout_lessons">
 
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutAnswers"
-        android:layout_weight="1">
-
-    </LinearLayout>
+        android:text="Refresh Database"
+        android:id="@+id/btnRefreshDb"
+        android:layout_weight="1" />
 
 </LinearLayout>
