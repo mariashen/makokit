@@ -22,6 +22,10 @@
                     <%= f.text_field :video_url, class: "form-control"  %>
                     <p class="help-block text-muted small">Or add an image here to stay funky.</p>
                 </div>
+                 <div class="form-group">
+                    <%= f.label "Image or Gif Upload", class: "control-label" %>
+                    <%= f.file_field :avatar %>         
+                </div>
 
                 <div class="form-group">
                     <%= f.submit 'Save', class: 'btn btn-xs btn-success' %>
