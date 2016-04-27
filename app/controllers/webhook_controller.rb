@@ -14,19 +14,19 @@ class WebhookController < ApplicationController
 	def receive
 		puts 'req'
 		puts request.body.read
-		request_body = JSON.parse(request.body.read)
-		puts 'rb'
-		puts request_body
-		messaging_events = request_body.entry[0].messaging
-		for i in 0..messaging_events.count
-			event = request_body.entry[0].messaging[i]
-			sender = event.sender.id
-			if event.message and event.message.text
-				sendTextMessage(sender, "hello")
-			end
-		end
+		# request_body = JSON.parse(request.body.read)
+		# puts 'rb'
+		# puts request_body
+		# messaging_events = request_body.entry[0].messaging
+		# for i in 0..messaging_events.count
+		# 	event = request_body.entry[0].messaging[i]
+		# 	sender = event.sender.id
+		# 	if event.message and event.message.text
+		# 		sendTextMessage(sender, "hello")
+		# 	end
+		# end
 
-		render status: :ok
+		# render status: :ok
 	end
 	
 	private
