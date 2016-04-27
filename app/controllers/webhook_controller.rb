@@ -16,6 +16,7 @@ class WebhookController < ApplicationController
 	def receive
 		# puts request.body.read
 		# returnee = 'nope'
+		puts "Hello, logs!"
 		request_body = JSON.parse(request.body.read)
 		messaging_events = request_body['entry'][0]['messaging']
 		# event = request_body['entry'][0]['messaging'][0]
