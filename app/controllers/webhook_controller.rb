@@ -2,8 +2,11 @@ class WebhookController < ApplicationController
 
 
 	def permission
-
-		render json: "response"
+		if params['hub.verify_token'] == 'verify_mako'
+			render plain: params['hub.challenge']
+		else
+			render plain: 'Error, wrong validation token'
+		end
 	end
 
 	def receive
