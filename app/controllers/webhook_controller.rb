@@ -24,6 +24,7 @@ class WebhookController < ApplicationController
 			# returnee = i.to_s
 			event = request_body['entry'][0]['messaging'][i]
 			sender = event['sender']['id']
+			puts sender
 			if event['message'] and event['message']['text']
 				sendTextMessage(sender, "hello")
 				# returnee = 'hello'
