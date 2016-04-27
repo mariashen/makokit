@@ -42,6 +42,6 @@ class WebhookController < ApplicationController
 			# messageData = {:text => text}
 			response = Unirest.post url, 
                         headers:{ "Accept" => "application/json" }, 
-                        parameters:{ :recipient => {:id => sender}, :message => {:text => text} }.to_json
+                        parameters:{ :recipient => {:id => sender.to_i}, :message => {:text => text} }.to_json
 		end
 end
