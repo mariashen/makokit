@@ -3,6 +3,8 @@ class WebhookController < ApplicationController
 	require 'unirest'
 	require 'json'
 
+	skip_before_action :verify_authenticity_token
+
 	def permission
 		if params['hub.verify_token'] == 'verify_mako'
 			render plain: params['hub.challenge']
