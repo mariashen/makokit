@@ -1,7 +1,7 @@
 class WebhookController < ApplicationController
 
 	require 'unirest'
-	require 'JSON'
+	require 'json'
 
 	def permission
 		if params['hub.verify_token'] == 'verify_mako'
