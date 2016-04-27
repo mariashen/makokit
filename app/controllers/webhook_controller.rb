@@ -14,15 +14,16 @@ class WebhookController < ApplicationController
 	end
 
 	def receive
-		request_body = JSON.parse(request.body.read)
-		messaging_events = request_body.entry[0].messaging
-		for i in 0..messaging_events.count
-			event = request_body.entry[0].messaging[i]
-			sender = event.sender.id
-			if event.message and event.message.text
-				sendTextMessage(sender, "hello")
-			end
-		end
+		puts request.body.read
+		# request_body = JSON.parse(request.body.read)
+		# messaging_events = request_body.entry[0].messaging
+		# for i in 0..messaging_events.count
+		# 	event = request_body.entry[0].messaging[i]
+		# 	sender = event.sender.id
+		# 	if event.message and event.message.text
+		# 		sendTextMessage(sender, "hello")
+		# 	end
+		# end
 
 		render status: :ok
 	end
