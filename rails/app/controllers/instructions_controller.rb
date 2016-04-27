@@ -44,6 +44,6 @@ class InstructionsController < ApplicationController
 	private
 
 		def instruction_params
-			params.require(:instruction).permit(:lesson_id, :text, :image_url, :video_url, :display_index)
+			params.require(:instruction).permit(:lesson_id, :text, :image_url, :video_url, :display_index, :avatar)
 		end
 end
