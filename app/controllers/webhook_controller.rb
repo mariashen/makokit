@@ -13,7 +13,7 @@ class WebhookController < ApplicationController
 
 	def receive
 		puts 'req'
-		puts request.body.read
+		# puts request.body.read
 		# request_body = JSON.parse(request.body.read)
 		# puts 'rb'
 		# puts request_body
