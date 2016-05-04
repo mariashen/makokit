@@ -15,24 +15,24 @@ class WebhookController < ApplicationController
 
 	def receive
 		request_body = JSON.parse(request.body.read)
-		messaging_events = request_body['entry'][0]['messaging']
-		for i in 0..(messaging_events.count-1)
-			event = request_body['entry'][0]['messaging'][i]
-			sender = event['sender']['id']
-			if event['message'] and event['message']['text']
-				if event['message']['text'] == "lesson"
-					sendAllLessons(sender)
-				else
-					sendTextMessage(sender, "hello")
-				end
-			end
-			# if event['postback'] and event['postback']['payload']
-			# 	text = ['postback']['payload']
-			# 	sendTextMessage(sender, text)
-			# end
-		end
+		# messaging_events = request_body['entry'][0]['messaging']
+		# for i in 0..(messaging_events.count-1)
+		# 	event = request_body['entry'][0]['messaging'][i]
+		# 	sender = event['sender']['id']
+		# 	if event['message'] and event['message']['text']
+		# 		if event['message']['text'] == "lesson"
+		# 			sendAllLessons(sender)
+		# 		else
+		# 			sendTextMessage(sender, "hello")
+		# 		end
+		# 	end
+		# 	# if event['postback'] and event['postback']['payload']
+		# 	# 	text = ['postback']['payload']
+		# 	# 	sendTextMessage(sender, text)
+		# 	# end
+		# end
 
-		render plain: ''
+		render plain: request_body
 	end
 	
 	private
