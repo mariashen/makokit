@@ -56,7 +56,7 @@ class WebhookController < ApplicationController
 			lessons.each do |l|
 				next if l.image_url == ''
 
-				instruction = Instructions.order(display_index: :asc).find_by lesson_id: l.id
+				# instruction = Instructions.order(display_index: :asc).find_by lesson_id: l.id
 
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
