@@ -26,6 +26,10 @@ class WebhookController < ApplicationController
 					sendTextMessage(sender, "hello")
 				end
 			end
+			if event['postback'] and event['postback']['payload']
+				text = ['postback']['payload']
+				sendTextMessage(sender, text)
+			end
 		end
 
 		render plain: ''
@@ -52,23 +56,17 @@ class WebhookController < ApplicationController
 			lessons.each do |l|
 				next if l.image_url == ''
 
+				instruction = Instructions.order(display_index: :asc).find_by lesson_id: l.id
+
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
 				:image_url => l.image_url, 
-				:buttons => [{:type => "postback", :title => "Learn This!", :payload => "Learn This!"}]}
+				:buttons => [{:type => "postback", :title => "Learn This!", :payload => instruction.text}]}
 
 				elementsData.push(lessonData)
 			end
 
 			recipientData = {:id => sender}
-			# elementsData = [{:title => "K'Nex Wheelbarrow", 
-			# 	:subtitle => "Learn about lever classes and pulley systems!", 
-			# 	:image_url => "https://makokit.herokuapp.com/img/sample/knex.jpg", 
-			# 	:buttons => [{:type => "postback", :title => "Learn This!", :payload => "Learn This!"}]}, 
-			# 	{:title => "Cooking Chemistry", 
-			# 	:subtitle => "Fry your eggs like you know what you're doing!", 
-			# 	:image_url => "https://makokit.herokuapp.com/img/sample/cooking.jpg", 
-			# 	:buttons => [{:type => "postback", :title => "Learn This!", :payload => "Learn This!"}]}]
 			payloadData = {:template_type => "generic", :elements => elementsData}
 			messageData = {:type => "template", :payload => payloadData}
 			attachmentData = {:attachment => messageData}
