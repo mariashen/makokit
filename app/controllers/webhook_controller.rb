@@ -30,7 +30,8 @@ class WebhookController < ApplicationController
 			if event['postback'] and event['postback']['payload']
 				instruction_id = event['postback']['payload'].to_i
 				instruction = Instruction.find(instruction_id)
-				sendTextMessage(sender, instruction.text)
+				answers = [{:text => "Next", :payload => instruction.next_instruction_id}]
+				sendButtons(sender, instruction.text, answers)
 			end
 		end
 
@@ -51,6 +52,24 @@ class WebhookController < ApplicationController
 		end
 
 		def sendImageButtons(sender, text, image_url, answers)
+			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
+			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
+
+			buttons = []
+			answers.each do |a|
+				buttonData = {:type => "postback", :title => a.text, :payload => a.payload}
+				buttons.push(buttonData)
+			end
+			recipientData = {:id => sender}
+			payloadData = {:template_type => "button", :text => text, :buttons => buttons}
+			messageData = {:type => "template", :payload => payloadData}
+			attachmentData = {:attachment => messageData}
+			response = Unirest.post url, 
+                        headers:{ "Content-Type" => "application/json" }, 
+                        parameters:{ :recipient => recipientData, :message => attachmentData }.to_json
+		end
+
+		def sendButtons(sender, text, answers)
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
 			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
 
