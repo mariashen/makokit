@@ -57,7 +57,7 @@ class WebhookController < ApplicationController
 			lessons.each do |l|
 				next if l.image_url == ''
 
-				instruction = Instructions.find_by lesson_id: l.id
+				instruction = Instructions.where(lesson_id: 3).take
 				puts instruction
 
 				lessonData = {:title => l.name, 
