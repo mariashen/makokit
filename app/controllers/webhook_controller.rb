@@ -47,11 +47,13 @@ class WebhookController < ApplicationController
 				# end
 				answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
 				
-				unless instruction.image_url.empty?
-					sendImage(sender, instruction.image_url)
-				end
-				
-				sendButtons(sender, instruction.text, answers)
+				# unless instruction.image_url.empty?
+				# 	sendImage(sender, instruction.image_url)
+				# end
+
+				image_url = "http://mccallumschinesedynasties.pbworks.com/f/1390343645/Han.jpg"
+				sendImage(sender, instruction.image_url)
+				# sendButtons(sender, instruction.text, answers)
 				# else
 				# 	sendImageButtons(sender, instruction.text, instruction.image_url, answers)
 				# end
