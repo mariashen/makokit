@@ -25,8 +25,8 @@ class WebhookController < ApplicationController
 				if event['message']['text'] == "lesson" or event['message']['text'] == "Lesson"
 					sendTextMessage(sender, "Here are our most recent lessons")
 					sendAllLessons(sender)
-				elsif  event['message']['text'] == "help"
-					help = "Tell Mako what you want to learn. Or type 'lesson' to see most recent lessons"
+				elsif  event['message']['text'] == "help" or event['message']['text'] == "Hello" or event['message']['text'] == "Hello"
+					help = "Hello! Tell MAKO what you want to learn. Or type 'lesson' to see most recent lessons"
 					sendTextMessage(sender, help)
 				else
 					sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
@@ -73,8 +73,6 @@ class WebhookController < ApplicationController
                         headers:{ "Content-Type" => "application/json" }, 
                         parameters:{ :recipient => recipientData, :message => messageData }.to_json
 		end
-		jarow = FuzzyStringMatch::JaroWinkler.create( :native )
-p jarow.getDistance(  "jones",      "johnson" )
 
 		def sendImage(sender, image_url)
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
@@ -127,13 +125,17 @@ p jarow.getDistance(  "jones",      "johnson" )
 				elementsData.push(lessonData)
 			end
 
-			recipientData = {:id => sender}
-			payloadData = {:template_type => "generic", :elements => elementsData}
-			messageData = {:type => "template", :payload => payloadData}
-			attachmentData = {:attachment => messageData}
-			response = Unirest.post url, 
-                        headers:{ "Content-Type" => "application/json" }, 
-                        parameters:{ :recipient => recipientData, :message => attachmentData }.to_json
+			if elementsData.empty?
+				sendTextMessage(sender, "I'm sorry, no lesson matching '" + lessonText + "' found")
+			else
+				recipientData = {:id => sender}
+				payloadData = {:template_type => "generic", :elements => elementsData}
+				messageData = {:type => "template", :payload => payloadData}
+				attachmentData = {:attachment => messageData}
+				response = Unirest.post url, 
+	                        headers:{ "Content-Type" => "application/json" }, 
+	                        parameters:{ :recipient => recipientData, :message => attachmentData }.to_json
+            end
 		end
 
 		def sendAllLessons(sender)
