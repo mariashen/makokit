@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get    'dashboard'   => 'lessons#dashboard'
   get '/webhook', to: 'webhook#permission'
   post '/webhook', to: 'webhook#receive'
+  get '/test', to: 'test#test'
 
   resources :lessons
   resources :instructions do
