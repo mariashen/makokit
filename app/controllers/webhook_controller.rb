@@ -50,7 +50,7 @@ class WebhookController < ApplicationController
 					sendButtons(sender, instruction.image_url, answers)
 					# sendImageButtons(sender, instruction.text, instruction.image_url, answers)
 				else
-					# sendButtons(sender, instruction.text, answers)
+					sendButtons(sender, instruction.text, answers)
 				end
 			end
 		end
