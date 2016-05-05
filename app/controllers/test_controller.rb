@@ -1,7 +1,7 @@
 class TestController < ApplicationController
 	def test
 
-		instruction = Instruction.all
+		instruction = Instruction.where(lesson_id: 3)
 
 		response = {}
 
