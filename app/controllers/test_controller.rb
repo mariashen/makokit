@@ -1,7 +1,7 @@
 class TestController < ApplicationController
 	def test
 
-		answer = Answer.where(instruction_id: 17).all
+		answer = Answer.where(instruction_id: 17).take
 
 		# response = {}
 
