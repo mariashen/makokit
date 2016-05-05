@@ -51,6 +51,7 @@ class WebhookController < ApplicationController
 				else
 					sendImageButtons(sender, instruction.text, instruction.image_url, answers)
 				end
+				# sendImageButtons(sender, instruction.text, "http://mccallumschinesedynasties.pbworks.com/f/1390343645/Han.jpg", answers)
 			end
 		end
 
@@ -79,10 +80,10 @@ class WebhookController < ApplicationController
 				buttonData = {:type => "postback", :title => a[:text], :payload => a[:payload]}
 				buttons.push(buttonData)
 			end
-			elementsData = {:title => text, 
+			elementsData = [{:title => text, 
 				:subtitle => '', 
 				:image_url => image_url, 
-				:buttons => buttons}
+				:buttons => buttons}]
 			recipientData = {:id => sender}
 			payloadData = {:template_type => "generic", :elements => elementsData}
 			messageData = {:type => "template", :payload => payloadData}
