@@ -28,7 +28,7 @@ class WebhookController < ApplicationController
 				end
 			end
 			if event['postback'] and event['postback']['payload']
-				text = event['postback']['payload']['text']
+				text = event['postback']['payload']
 				sendTextMessage(sender, text)
 			end
 		end
@@ -63,7 +63,7 @@ class WebhookController < ApplicationController
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
 				:image_url => l.image_url, 
-				:buttons => [{:type => "postback", :title => "Learn This!", :payload => payload}]}
+				:buttons => [{:type => "postback", :title => "Learn This!", :payload => instruction.text}]}
 
 				elementsData.push(lessonData)
 			end
