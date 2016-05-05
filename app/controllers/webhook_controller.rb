@@ -27,10 +27,10 @@ class WebhookController < ApplicationController
 					sendTextMessage(sender, "hello")
 				end
 			end
-			# if event['postback'] and event['postback']['payload']
-			# 	text = ['postback']['payload']
-			# 	sendTextMessage(sender, text)
-			# end
+			if event['postback'] and event['postback']['payload']
+				text = ['postback']['payload']
+				sendTextMessage(sender, text)
+			end
 		end
 
 		render plain: request_body
