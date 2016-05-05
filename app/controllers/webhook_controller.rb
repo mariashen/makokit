@@ -22,7 +22,7 @@ class WebhookController < ApplicationController
 			sender = event['sender']['id']
 			if event['message'] and event['message']['text']
 				if event['message']['text'] == "lesson"
-					sendAllLessons(sender)
+					# sendAllLessons(sender)
 				else
 					sendTextMessage(sender, "hello")
 				end
