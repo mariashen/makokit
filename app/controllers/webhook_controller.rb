@@ -30,22 +30,22 @@ class WebhookController < ApplicationController
 			if event['postback'] and event['postback']['payload']
 				instruction_id = event['postback']['payload'].to_i
 				instruction = Instruction.find(instruction_id)
-				# answers = []
-				# if Answer.exists?(instruction_id: instruction.id)
-				# 	Answer.where(instruction_id: instruction.id).each do |ans|
-				# 		answer = {}
-				# 		if AnswerJump.exists?(answer_id: ans.id)
-				# 			jump = AnswerJump.where(answer_id: ans.id).take
-				# 			answer = {:text => ans.text, :payload => jump.instruction_id.to_s}
-				# 		else
-				# 			answer = {:text => ans.text, :payload => instruction.next_instruction_id.to_s}
-				# 		end
-				# 		answers.push(answer)
-				# 	end
-				# else
-				# 	answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
-				# end
-				answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
+				answers = []
+				if Answer.exists?(instruction_id: instruction.id)
+					Answer.where(instruction_id: instruction.id).each do |ans|
+						answer = {}
+						if AnswerJump.exists?(answer_id: ans.id)
+							jump = AnswerJump.where(answer_id: ans.id).take
+							answer = {:text => ans.text, :payload => jump.instruction_id.to_s}
+						else
+							answer = {:text => ans.text, :payload => instruction.next_instruction_id.to_s}
+						end
+						answers.push(answer)
+					end
+				else
+					answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
+				end
+				# answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
 				
 				unless instruction.image_url.empty?
 					sendImage(sender, instruction.image_url)
