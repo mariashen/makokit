@@ -31,9 +31,6 @@ class WebhookController < ApplicationController
 					sendTextMessage(sender, help)
 				elsif text == "name" or text == "Name"
 					name = getUserName(sender)
-					if name == "Jing"
-						name = "Mean Bambi"
-					end
 					sendTextMessage(sender, "Hi #{name}!")
 				else
 					sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
@@ -64,7 +61,9 @@ class WebhookController < ApplicationController
 				unless instruction.image_url.empty?
 					sendImage(sender, instruction.image_url)
 				end
-				sendButtons(sender, instruction.text, answers)
+				text = instruction.text
+				text.gsub! '<name>', getUserName(sender)
+				sendButtons(sender, text, answers)
 			end
 		end
 		render plain: ''
