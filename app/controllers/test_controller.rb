@@ -1,7 +1,12 @@
 class TestController < ApplicationController
 	def test
 
-		# instruction = Instruction.order(display_index: :asc).find_by lesson_id: l.id
-		render plain: 'instruction'
+		instruction = Instruction.all
+
+		response = {}
+
+		response[:instructions] = instruction
+
+		render json: response
 	end
 end
