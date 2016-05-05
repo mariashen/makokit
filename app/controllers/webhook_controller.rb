@@ -62,7 +62,7 @@ class WebhookController < ApplicationController
 					sendImage(sender, instruction.image_url)
 				end
 				text = instruction.text
-				text.gsub! '<name>', getUserName(sender)
+				text.gsub! '<name>', "username"
 				sendButtons(sender, text, answers)
 			end
 		end
