@@ -28,8 +28,9 @@ class WebhookController < ApplicationController
 				end
 			end
 			if event['postback'] and event['postback']['payload']
-				text = event['postback']['payload']
-				sendTextMessage(sender, text)
+				instruction_id = event['postback']['payload'].to_i
+				instruction = Instruction.find(instruction_id)
+				sendTextMessage(sender, instruction.text)
 			end
 		end
 
@@ -49,6 +50,28 @@ class WebhookController < ApplicationController
                         parameters:{ :recipient => recipientData, :message => messageData }.to_json
 		end
 
+		def sendImageButtons(sender, text, image_url, answers)
+			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
+			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
+
+			buttons = []
+			answers.each do |a|
+				buttonData = {:type => "postback", :title => a.text, :payload => a.payload}
+				buttons.push(buttonData)
+			end
+			elementsData = {:title => text, 
+				:subtitle => '', 
+				:image_url => image_url, 
+				:buttons => buttons}
+			recipientData = {:id => sender}
+			payloadData = {:template_type => "generic", :elements => elementsData}
+			messageData = {:type => "template", :payload => payloadData}
+			attachmentData = {:attachment => messageData}
+			response = Unirest.post url, 
+                        headers:{ "Content-Type" => "application/json" }, 
+                        parameters:{ :recipient => recipientData, :message => attachmentData }.to_json
+		end
+
 		def sendAllLessons(sender)
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
 			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
@@ -59,11 +82,11 @@ class WebhookController < ApplicationController
 				next if l.image_url == ''
 
 				instruction = Instruction.where(lesson_id: l.id).order(:display_index).take
-				payload = "text:#{instruction.text},,,next:#{instruction.next_instruction_id},,,image_url:#{instruction.image_url}"
+				# payload = "text:#{instruction.text},,,next:#{instruction.next_instruction_id},,,image_url:#{instruction.image_url}"
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
 				:image_url => l.image_url, 
-				:buttons => [{:type => "postback", :title => "Learn This!", :payload => payload}]}
+				:buttons => [{:type => "postback", :title => "Learn This!", :payload => instruction.id.to_s}]}
 
 				elementsData.push(lessonData)
 			end
