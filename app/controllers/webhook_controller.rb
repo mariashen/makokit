@@ -18,8 +18,8 @@ class WebhookController < ApplicationController
 		messaging_events = request_body['entry'][0]['messaging']
 		puts messaging_events
 		for i in 0..(messaging_events.count-1)
-		# 	event = request_body['entry'][0]['messaging'][i]
-		# 	sender = event['sender']['id']
+			event = request_body['entry'][0]['messaging'][i]
+			sender = event['sender']['id']
 		# 	if event['message'] and event['message']['text']
 		# 		if event['message']['text'] == "lesson"
 		# 			sendAllLessons(sender)
