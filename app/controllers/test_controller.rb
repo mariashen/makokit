@@ -19,10 +19,12 @@ class TestController < ApplicationController
 				end
 				answers.push(answer)
 			end
+
 		else
 			answers = [{:text => "Next", :payload => "19"}]
+			# render.plain
 		end
 
-		render plain: answer
+		render plain: 'answer'
 	end
 end
