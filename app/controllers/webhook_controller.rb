@@ -95,7 +95,7 @@ class WebhookController < ApplicationController
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
 			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
 
-			lessons = Lesson.all
+			lessons = Lesson.order(:id)
 			elementsData = []
 			lessons.each do |l|
 				next if l.image_url == ''
