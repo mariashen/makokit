@@ -46,11 +46,15 @@ class WebhookController < ApplicationController
 				# 	answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
 				# end
 				answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
-				if instruction.image_url.empty?
-					sendButtons(sender, instruction.text, answers)
-				else
-					sendImageButtons(sender, instruction.text, instruction.image_url, answers)
+				
+				unless instruction.image_url.empty?
+					sendImage(sender, instruction.image_url)
 				end
+				
+				sendButtons(sender, instruction.text, answers)
+				# else
+				# 	sendImageButtons(sender, instruction.text, instruction.image_url, answers)
+				# end
 				# sendImageButtons(sender, instruction.text, "http://mccallumschinesedynasties.pbworks.com/f/1390343645/Han.jpg", answers)
 			end
 		end
@@ -71,22 +75,11 @@ class WebhookController < ApplicationController
                         parameters:{ :recipient => recipientData, :message => messageData }.to_json
 		end
 
-		def sendImageButtons(sender, text, image_url, answers)
+		def sendImage(sender, image_url)
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
 			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
 
-			buttons = []
-			answers.each do |a|
-				buttonData = {:type => "postback", :title => a[:text], :payload => a[:payload]}
-				buttons.push(buttonData)
-			end
-			elementsData = [{:title => text, 
-				:subtitle => '', 
-				:image_url => image_url, 
-				:buttons => buttons}]
-			recipientData = {:id => sender}
-			payloadData = {:template_type => "generic", :elements => elementsData}
-			messageData = {:type => "template", :payload => payloadData}
+			messageData = {:type => "image", :payload => {:url => image_url}}
 			attachmentData = {:attachment => messageData}
 			response = Unirest.post url, 
                         headers:{ "Content-Type" => "application/json" }, 
