@@ -137,7 +137,7 @@ class WebhookController < ApplicationController
 			if elementsData.empty?
 				sendTextMessage(sender, "I'm sorry, no lesson matching '" + lessonText + "' found")
 			else
-				sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
+				sendTextMessage(sender, "Here are the lessons that matched '" + lessonText + "'")
 				recipientData = {:id => sender}
 				payloadData = {:template_type => "generic", :elements => elementsData}
 				messageData = {:type => "template", :payload => payloadData}
