@@ -51,14 +51,8 @@ class WebhookController < ApplicationController
 					sendImage(sender, instruction.image_url)
 				end
 				sendButtons(sender, instruction.text, answers)
-				# else
-				# 	sendImageButtons(sender, instruction.text, instruction.image_url, answers)
-				# end
-				# sendImageButtons(sender, instruction.text, "http://mccallumschinesedynasties.pbworks.com/f/1390343645/Han.jpg", answers)
 			end
 		end
-
-		# instruction = Instruction.order(display_index: :asc).find_by lesson_id: l.id
 		render plain: ''
 	end
 	
