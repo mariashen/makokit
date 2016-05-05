@@ -1,12 +1,15 @@
 class TestController < ApplicationController
 	def test
 
-		instruction = Instruction.where(lesson_id: 3).order(:display_index).take
+		answer = Answer.where(instruction_id: 17)
 
-		response = {}
+		# response = {}
 
-		response[:instructions] = instruction
-
-		render plain: instruction.text
+		# response[:instructions] = instruction
+		if answer
+			render plain: answer.text
+		else
+			render plain: 'nothing to see here'
+		end
 	end
 end
