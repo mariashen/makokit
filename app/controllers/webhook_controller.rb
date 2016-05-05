@@ -28,8 +28,8 @@ class WebhookController < ApplicationController
 				end
 			end
 			if event['postback'] and event['postback']['payload']
-				# text = event['postback']['payload']
-				# sendTextMessage(sender, text)
+				text = event['postback']['payload']
+				sendTextMessage(sender, text)
 			end
 		end
 
@@ -59,7 +59,7 @@ class WebhookController < ApplicationController
 				next if l.image_url == ''
 
 				instruction = Instruction.where(lesson_id: l.id).order(:display_index).take
-				payload = {:text => instruction.text}
+				payload = [instruction.text, instruction.next_instruction_id.to_s, instruction.image_url].join(",,,")
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
 				:image_url => l.image_url, 
