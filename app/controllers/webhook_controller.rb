@@ -58,13 +58,12 @@ class WebhookController < ApplicationController
 			lessons.each do |l|
 				next if l.image_url == ''
 
-				instruction = Instruction.order(display_index: :asc).find_by lesson_id: l.id
-				puts instruction
+				instruction = Instruction.where(lesson_id: 3).order(:display_index).take
 
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
 				:image_url => l.image_url, 
-				:buttons => [{:type => "postback", :title => "Learn This!", :payload => "instruction.text"}]}
+				:buttons => [{:type => "postback", :title => "Learn This!", :payload => instruction.text}]}
 
 				elementsData.push(lessonData)
 			end
