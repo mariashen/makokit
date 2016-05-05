@@ -176,6 +176,6 @@ class WebhookController < ApplicationController
 			url = 'https://graph.facebook.com/v2.6/' + sender.to_s + '?fields=first_name&access_token=' + token
 			response = Unirest.get url
 
-			return response[:first_name]
+			return response.body['first_name']
 		end
 end
