@@ -57,7 +57,7 @@ class WebhookController < ApplicationController
 
 			buttons = []
 			answers.each do |a|
-				buttonData = {:type => "postback", :title => a[:text], :payload => a[:payload]}
+				buttonData = {:type => "postback", :title => a[:text], :payload => "a[:payload]"}
 				buttons.push(buttonData)
 			end
 			elementsData = {:title => text, 
