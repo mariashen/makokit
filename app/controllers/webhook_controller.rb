@@ -14,27 +14,27 @@ class WebhookController < ApplicationController
 	end
 
 	def receive
-		# request_body = JSON.parse(request.body.read)
-		# messaging_events = request_body['entry'][0]['messaging']
-		# # puts messaging_events
-		# for i in 0..(messaging_events.count-1)
-		# 	event = request_body['entry'][0]['messaging'][i]
-		# 	sender = event['sender']['id']
-		# 	if event['message'] and event['message']['text']
-		# 		if event['message']['text'] == "lesson"
-		# 			sendAllLessons(sender)
-		# 		else
-		# 			sendTextMessage(sender, "hello")
-		# 		end
-		# 	end
-		# 	if event['postback'] and event['postback']['payload']
-		# 		text = event['postback']['payload']
-		# 		sendTextMessage(sender, text)
-		# 	end
-		# end
+		request_body = JSON.parse(request.body.read)
+		messaging_events = request_body['entry'][0]['messaging']
+		# puts messaging_events
+		for i in 0..(messaging_events.count-1)
+			event = request_body['entry'][0]['messaging'][i]
+			sender = event['sender']['id']
+			if event['message'] and event['message']['text']
+				if event['message']['text'] == "lesson"
+					sendAllLessons(sender)
+				else
+					sendTextMessage(sender, "hello")
+				end
+			end
+			if event['postback'] and event['postback']['payload']
+				text = event['postback']['payload']
+				sendTextMessage(sender, text)
+			end
+		end
 
-		instruction = Instruction.order(display_index: :asc).find_by lesson_id: l.id
-		render plain: instruction
+		# instruction = Instruction.order(display_index: :asc).find_by lesson_id: l.id
+		render plain: ''
 	end
 	
 	private
