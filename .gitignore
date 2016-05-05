@@ -8,3 +8,4 @@
 */captures
 rails/config/secrets.yml
 rails/config/initializers/aws.rb
+*/aws.rb
