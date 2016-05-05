@@ -30,7 +30,7 @@ class WebhookController < ApplicationController
 			if event['postback'] and event['postback']['payload']
 				instruction_id = event['postback']['payload'].to_i
 				instruction = Instruction.find(instruction_id)
-				answers = [{:text => "Next", :payload => instruction.next_instruction_id}]
+				answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
 				sendButtons(sender, instruction.text, answers)
 			end
 		end
