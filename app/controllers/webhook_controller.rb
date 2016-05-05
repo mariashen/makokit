@@ -52,7 +52,7 @@ class WebhookController < ApplicationController
 				# end
 
 				image_url = "http://mccallumschinesedynasties.pbworks.com/f/1390343645/Han.jpg"
-				sendImage(sender, instruction.image_url)
+				sendImage(sender, image_url)
 				# sendButtons(sender, instruction.text, answers)
 				# else
 				# 	sendImageButtons(sender, instruction.text, instruction.image_url, answers)
@@ -81,7 +81,7 @@ class WebhookController < ApplicationController
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
 			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
 
-			messageData = {:type => "image", :payload => {:url => "http://mccallumschinesedynasties.pbworks.com/f/1390343645/Han.jpg"}}
+			messageData = {:type => "image", :payload => {:url => image_url}}
 			attachmentData = {:attachment => messageData}
 			response = Unirest.post url, 
                         headers:{ "Content-Type" => "application/json" }, 
