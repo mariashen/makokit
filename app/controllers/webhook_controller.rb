@@ -46,11 +46,11 @@ class WebhookController < ApplicationController
 				# 	answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
 				# end
 				answers = [{:text => "Next", :payload => instruction.next_instruction_id.to_s}]
-				if instruction.image_url == ""
-					sendImageButtons(sender, instruction.text, instruction.image_url, answers)
-				else
-					sendButtons(sender, instruction.text, answers)
-				end
+				# if instruction.image_url == ""
+				# 	sendImageButtons(sender, instruction.text, instruction.image_url, answers)
+				# else
+				sendButtons(sender, instruction.text, answers)
+				# end
 			end
 		end
 
