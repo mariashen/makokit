@@ -7,6 +7,6 @@ class TestController < ApplicationController
 
 		response[:instructions] = instruction
 
-		render json: response
+		render plain: instruction.text
 	end
 end
