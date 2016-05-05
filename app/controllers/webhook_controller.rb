@@ -60,8 +60,12 @@ class WebhookController < ApplicationController
 				buttonData = {:type => "postback", :title => a.text, :payload => a.payload}
 				buttons.push(buttonData)
 			end
+			elementsData = {:title => text, 
+				:subtitle => '', 
+				:image_url => image_url, 
+				:buttons => buttons}
 			recipientData = {:id => sender}
-			payloadData = {:template_type => "button", :text => text, :buttons => buttons}
+			payloadData = {:template_type => "generic", :elements => elementsData}
 			messageData = {:type => "template", :payload => payloadData}
 			attachmentData = {:attachment => messageData}
 			response = Unirest.post url, 
@@ -78,12 +82,8 @@ class WebhookController < ApplicationController
 				buttonData = {:type => "postback", :title => a.text, :payload => a.payload}
 				buttons.push(buttonData)
 			end
-			elementsData = {:title => text, 
-				:subtitle => '', 
-				:image_url => image_url, 
-				:buttons => buttons}
 			recipientData = {:id => sender}
-			payloadData = {:template_type => "generic", :elements => elementsData}
+			payloadData = {:template_type => "button", :text => text, :buttons => buttons}
 			messageData = {:type => "template", :payload => payloadData}
 			attachmentData = {:attachment => messageData}
 			response = Unirest.post url, 
