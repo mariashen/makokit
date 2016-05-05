@@ -25,6 +25,6 @@ class TestController < ApplicationController
 			# render.plain
 		end
 
-		render plain: 'answer'
+		render json: {:answer => answers}
 	end
 end
