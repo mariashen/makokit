@@ -6,8 +6,8 @@
 			<h4 class="timeline-title">Add another instruction</h4>
 		</div>
 		<div class="timeline-body">
-			<%= form_for @new_instruction, remote: true do |f| %>
-			<%= f.hidden_field :lesson_id, value: @lesson.id  %>
+			<%= form_for @new_instruction, remote: true, html: { multipart: true }, authenticity_token: true do |f| %>
+ 			<%= f.hidden_field :lesson_id, value: @lesson.id  %>
 			<div class="form-group">
 				<%= f.label :text, class: "control-label" %>
 				<%= f.text_field :text, class: "form-control"  %>
@@ -20,7 +20,11 @@
 				<%= f.label :video_url, class: "control-label" %>
 				<%= f.text_field :video_url, class: "form-control"  %>
 			</div>
-			<div class="form-group">
+ 			<div class="form-group">
+				<%= f.label "Image or Gif Upload", class: "control-label" %>
+  				<%= f.file_field :avatar %>			
+  			</div>
+ 			<div class="form-group">
 				<%= f.submit 'Add', class: 'btn btn-success' %>
 			</div>
 			<% end %>

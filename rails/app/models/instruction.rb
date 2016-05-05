@@ -4,7 +4,13 @@ class Instruction < ActiveRecord::Base
 	has_many :answers
 	has_many :answer_jumps, dependent: :destroy
 	has_many :arriving_answers, through: :answer_jumps, class_name: 'Answer'
-
+	
+	# add image attachment
+	has_attached_file :avatar, 
+                    styles: { :medium => "200x200>", :thumb => "100x100>" }
+                    # :storage => :s3,
+                    # :s3_credentials => "#{Rails.root}/config/secrets.yml",
+  	validates_attachment_content_type :avatar, :content_type => /^image\/(png|gif|jpeg|jpg|.gif)/
 	after_create do 
 		last_index = self.collection.last_index
 		self.update_attribute(:display_index, last_index) 
