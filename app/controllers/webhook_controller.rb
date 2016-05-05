@@ -28,7 +28,7 @@ class WebhookController < ApplicationController
 				end
 			end
 			if event['postback'] and event['postback']['payload']
-				text = ['postback']['payload']
+				text = event['postback']['payload']
 				sendTextMessage(sender, text)
 			end
 		end
@@ -57,7 +57,8 @@ class WebhookController < ApplicationController
 			lessons.each do |l|
 				next if l.image_url == ''
 
-				# instruction = Instructions.order(display_index: :asc).find_by lesson_id: l.id
+				instruction = Instructions.find_by lesson_id: l.id
+				puts instruction
 
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
