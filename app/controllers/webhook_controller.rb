@@ -31,6 +31,9 @@ class WebhookController < ApplicationController
 					sendTextMessage(sender, help)
 				elsif text == "name" or text == "Name"
 					name = getUserName(sender)
+					if name == "Jing"
+						name = "Mean Bambi"
+					end
 					sendTextMessage(sender, "Hi #{name}!")
 				else
 					sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
