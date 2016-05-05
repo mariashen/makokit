@@ -6,3 +6,4 @@
 *.DS_Store
 */build
 */captures
+rails/config/secrets.yml

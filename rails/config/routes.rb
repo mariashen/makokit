@@ -4,6 +4,9 @@ Rails.application.routes.draw do
  
   root 'static_pages#home'
   get    'dashboard'   => 'lessons#dashboard'
+  get '/webhook', to: 'webhook#permission'
+  post '/webhook', to: 'webhook#receive'
+  get '/test', to: 'test#test'
 
   resources :lessons
   resources :instructions do
