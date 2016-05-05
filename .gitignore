@@ -7,3 +7,4 @@
 */build
 */captures
 rails/config/secrets.yml
+rails/config/initializers/aws.rb
