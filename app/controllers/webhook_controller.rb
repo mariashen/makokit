@@ -59,7 +59,7 @@ class WebhookController < ApplicationController
 				next if l.image_url == ''
 
 				instruction = Instruction.where(lesson_id: l.id).order(:display_index).take
-				payload = [instruction.text, instruction.next_instruction_id.to_s, instruction.image_url].join(",,,")
+				payload = "text:#{instruction.text},,,next:#{instruction.next_instruction_id},,,image_url:#{instruction.image_url}"
 				lessonData = {:title => l.name, 
 				:subtitle => l.description, 
 				:image_url => l.image_url, 
