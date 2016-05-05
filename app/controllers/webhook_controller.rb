@@ -61,7 +61,7 @@ class WebhookController < ApplicationController
 				unless instruction.image_url.empty?
 					sendImage(sender, instruction.image_url)
 				end
-				sendButtons(sender, text, answers)
+				sendButtons(sender, instruction.text, answers)
 			end
 		end
 		render plain: ''
