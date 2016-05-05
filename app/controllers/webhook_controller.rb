@@ -33,7 +33,6 @@ class WebhookController < ApplicationController
 					name = getUserName(sender)
 					sendTextMessage(sender, "Hi #{name}!")
 				else
-					sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
 					sendLessons(sender, event['message']['text'])
 				end
 
@@ -138,6 +137,7 @@ class WebhookController < ApplicationController
 			if elementsData.empty?
 				sendTextMessage(sender, "I'm sorry, no lesson matching '" + lessonText + "' found")
 			else
+				sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
 				recipientData = {:id => sender}
 				payloadData = {:template_type => "generic", :elements => elementsData}
 				messageData = {:type => "template", :payload => payloadData}
