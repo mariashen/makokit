@@ -17,7 +17,7 @@
                     <% if !instruction.video_url.blank? %>
                         <p>Play video at <%= instruction.video_url %></p>
                     <% end %>
-                    <% if !instruction.avatar.nil? %>
+                    <% if !instruction.avatar.blank? %>
                         <img src= "<%=instruction.avatar.url %>" >
                     <% end %>
                     <hr>
