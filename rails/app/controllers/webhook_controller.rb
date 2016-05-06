@@ -22,16 +22,20 @@ class WebhookController < ApplicationController
 			event = request_body['entry'][0]['messaging'][i]
 			sender = event['sender']['id']
 			if event['message'] and event['message']['text']
-				if event['message']['text'] == "lesson" or event['message']['text'] == "Lesson"
+				text = event['message']['text']
+				if text == "lesson" or text == "Lesson"
 					sendTextMessage(sender, "Here are our most recent lessons")
 					sendAllLessons(sender)
-				elsif  event['message']['text'] == "help" or event['message']['text'] == "Hello" or event['message']['text'] == "Hello"
+				elsif  text == "help" or text == "Hello" or text == "Hello"
 					help = "Hello! Tell MAKO what you want to learn. Or type 'lesson' to see most recent lessons"
 					sendTextMessage(sender, help)
+				elsif text == "name" or text == "Name"
+					name = getUserName(sender)
+					sendTextMessage(sender, "Hi #{name}!")
 				else
-					sendTextMessage(sender, "Here are the lessons that matched '" + event['message']['text'] + "'")
 					sendLessons(sender, event['message']['text'])
 				end
+
 			end
 			if event['postback'] and event['postback']['payload']
 				instruction_id = event['postback']['payload'].to_i
@@ -90,6 +94,11 @@ class WebhookController < ApplicationController
 			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
 			url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + token
 
+			if text.include? "<name>"
+				username = getUserName(sender)
+				text.gsub! "<name>", username
+			end
+
 			buttons = []
 			answers.each do |a|
 				buttonData = {:type => "postback", :title => a[:text], :payload => a[:payload]}
@@ -128,6 +137,7 @@ class WebhookController < ApplicationController
 			if elementsData.empty?
 				sendTextMessage(sender, "I'm sorry, no lesson matching '" + lessonText + "' found")
 			else
+				sendTextMessage(sender, "Here are the lessons that matched '" + lessonText + "'")
 				recipientData = {:id => sender}
 				payloadData = {:template_type => "generic", :elements => elementsData}
 				messageData = {:type => "template", :payload => payloadData}
@@ -164,5 +174,13 @@ class WebhookController < ApplicationController
 			response = Unirest.post url, 
                         headers:{ "Content-Type" => "application/json" }, 
                         parameters:{ :recipient => recipientData, :message => attachmentData }.to_json
+		end
+
+		def getUserName(sender)
+			token = 'EAADrxm348aEBAIyMoDh1rf3lScB2NCOWWm9IUx9H1AAZB9nWyEFwV5vJ98ejHeJC0Mcpp3DhZCS5yFvAiYU3qwmXXMh3lDt2QaFAr43Tik3ybHhooF3d8WFw97loxWyn9C4Bg0XOJecsrHhAAoHv5IJAcKms5y6fMtzrtiWgZDZD'
+			url = 'https://graph.facebook.com/v2.6/' + sender.to_s + '?fields=first_name&access_token=' + token
+			response = Unirest.get url
+
+			return response.body['first_name']
 		end
 end
